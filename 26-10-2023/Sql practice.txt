@@ -1,0 +1,43 @@
+create database CustomerDemo
+use [CustomerDemo]
+
+CREATE TABLE Customers (
+    CustomerID INT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Email VARCHAR(100),
+    Phone VARCHAR(20),
+    Address VARCHAR(255),
+    City VARCHAR(50),
+    State VARCHAR(2),
+    ZipCode VARCHAR(10)
+);
+
+INSERT INTO Customers (CustomerID, FirstName, LastName, Email, Phone, Address, City, State, ZipCode)
+VALUES
+(1, 'John', 'Doe', 'john.doe@email.com', '555-123-4567', '123 Main St', 'Anytown', 'NY', '12345'),
+(2, 'Jane', 'Smith', 'jane.smith@email.com', '555-987-6543', '456 Elm St', 'Othertown', 'CA', '54321'),
+(3, 'Bob', 'Johnson', 'bob.johnson@email.com', '555-555-5555', '789 Oak St', 'Anycity', 'TX', '67890');
+
+UPDATE Customers
+SET Email = 'new.email@email.com'
+WHERE CustomerID = 1;
+
+ALTER TABLE Customers
+ADD Country VARCHAR(50);
+
+DELETE FROM Customers
+WHERE CustomerID = 2;
+
+SELECT CustomerID, CONCAT(FirstName, ' ', LastName) AS FullName
+FROM Customers;
+
+SELECT State, COUNT(*) AS CustomerCount
+FROM Customers
+WHERE State = 'NY'
+GROUP BY State;
+
+SELECT UPPER(Email) AS UppercaseEmail
+FROM Customers;
+
+Select * from Customers
